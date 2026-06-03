@@ -67,3 +67,20 @@ CREATE TABLE Medicos(
 		REFERENCES Especialidades(id_especialidades)
 );
 
+-- Tabla Citas
+CREATE TABLE Citas(
+    id_cita INT IDENTITY(1,1),
+    fecha_cita DATETIME,
+    id_paciente INT,
+    id_medico INT,
+
+    CONSTRAINT PK_Citas PRIMARY KEY(id_cita),
+
+    CONSTRAINT FK_Citas_Pacientes
+        FOREIGN KEY(id_paciente)
+        REFERENCES Pacientes(id_paciente),
+
+    CONSTRAINT FK_Citas_Medicos
+        FOREIGN KEY(id_medico)
+        REFERENCES Medicos(id_medico)
+);
