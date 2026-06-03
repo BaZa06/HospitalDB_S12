@@ -26,3 +26,11 @@ GO
 USE HospitalDB;
 GO
 
+--Creación de tabla especialidades
+CREATE TABLE Especialidades(
+	id_especialidades INT IDENTITY(1,1),
+	nombre VARCHAR(50) NOT NULL,
+	CONSTRAINT PK_Especialidades PRIMARY KEY(id_especialidades)
+);
+
+--Tab
