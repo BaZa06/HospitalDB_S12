@@ -130,3 +130,53 @@ CREATE TABLE Habitaciones(
 );
 GO
 
+
+-- Pacientes
+ALTER TABLE Pacientes
+ADD telefono VARCHAR(20);
+
+ALTER TABLE Pacientes
+ADD direccion VARCHAR(150);
+
+ALTER TABLE Pacientes
+ADD genero VARCHAR(20);
+
+ALTER TABLE Pacientes
+ADD tipo_sangre VARCHAR(5);
+
+ALTER TABLE Pacientes
+ADD fecha_nacimiento DATE;
+
+ALTER TABLE Pacientes
+ALTER COLUMN nombre VARCHAR(100);
+
+ALTER TABLE Pacientes
+ALTER COLUMN direccion VARCHAR(250);
+
+-- Médicos
+ALTER TABLE Medicos
+ADD experiencia INT;
+
+ALTER TABLE Medicos
+ADD turno VARCHAR(20);
+
+ALTER TABLE Medicos
+ADD observaciones VARCHAR(200);
+
+ALTER TABLE Medicos
+DROP COLUMN observaciones;
+
+-- Citas
+ALTER TABLE Citas
+ADD estado VARCHAR(20);
+
+ALTER TABLE Citas
+ADD costo_consulta FLOAT;
+
+ALTER TABLE Citas
+ALTER COLUMN costo_consulta DECIMAL(10,2);
+
+-- Habitaciones
+ALTER TABLE Habitaciones
+ADD disponibilidad BIT;
+GO
