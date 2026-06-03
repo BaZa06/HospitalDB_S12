@@ -33,4 +33,16 @@ CREATE TABLE Especialidades(
 	CONSTRAINT PK_Especialidades PRIMARY KEY(id_especialidades)
 );
 
---Tab
+--Tabla pacientes
+CREATE TABLE Pacientes(
+	id_paciente INT IDENTITY(1,1),
+	nombre VARCHAR(50) NOT NULL,
+	apellido VARCHAR(50) NOT NULL,
+	edad INT,
+	correo VARCHAR(100) NOT NULL,
+	fecha_registro DATETIME DEFAULT GETDATE(),
+
+	CONSTRAINT PK_Pacientes PRIMARY KEY(id_paciente),
+	CONSTRAINT UQ_Pacientes_correo UNIQUE(correo),
+	CONSTRAINT CHK_Paciente_Edad CHECK(edad >= 0)
+);
