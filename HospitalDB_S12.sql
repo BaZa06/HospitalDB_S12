@@ -98,3 +98,20 @@ CREATE TABLE Tratamientos(
         FOREIGN KEY(id_paciente)
         REFERENCES Pacientes(id_paciente)
 );
+
+--Tabla de habitaciones
+CREATE TABLE Habitaciones(
+	id_habitacion INT IDENTITY(1,1),
+	numero_habitacion VARCHAR(10) NOT NULL,
+	tipo_habitacion VARCHAR(50) NOT NULL,
+    id_paciente INT,
+
+    CONSTRAINT PK_Habitaciones PRIMARY KEY(id_habitacion),
+	CONSTRAINT CHK_Habitaciones_numero_habitacion CHECK(numero_habitacion LIKE('[A-Z][0-9][0-9][0-9]'),
+	CONSTRAINT CHK_Habitaciones_tipo_habitacion CHECK(tipo_habitacion IN('General', 'Privada', 'UCI', 'Emergencia', 'Maternidad'),
+
+    CONSTRAINT FK_Habitaciones_Pacientes
+        FOREIGN KEY(id_paciente)
+        REFERENCES Pacientes(id_paciente)
+);
+GO
