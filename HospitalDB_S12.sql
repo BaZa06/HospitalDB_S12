@@ -46,3 +46,24 @@ CREATE TABLE Pacientes(
 	CONSTRAINT UQ_Pacientes_correo UNIQUE(correo),
 	CONSTRAINT CHK_Paciente_Edad CHECK(edad >= 0)
 );
+
+--Tabla medicos
+CREATE TABLE Medicos(
+	id_medico INT IDENTITY(1,1),
+	nombre VARCHAR(50) NOT NULL,
+	apellido VARCHAR(50) NOT NULL,
+	salario DECIMAL(10,2),
+	edad INT,
+	correo VARCHAR(100) NOT NULL,
+	id_especialidades INT,
+
+	CONSTRAINT PK_Medicos PRIMARY KEY(id_medico),
+	CONSTRAINT UQ_Medicos_correo UNIQUE(correo),
+	CONSTRAINT CHK_Medicos_salario CHECK(salario >= 0),
+	CONSTRAINT CHK_Medicos_edad CHECK(edad >= 0),
+
+	CONSTRAINT FK_Medicos_Especialidades
+		FOREIGN KEY(id_especialidades)
+		REFERENCES Especialidades(id_especialidades)
+);
+
