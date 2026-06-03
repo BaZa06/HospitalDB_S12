@@ -84,3 +84,17 @@ CREATE TABLE Citas(
         FOREIGN KEY(id_medico)
         REFERENCES Medicos(id_medico)
 );
+
+-- Tabla Tratamientos
+CREATE TABLE Tratamientos(
+    id_tratamiento INT IDENTITY(1,1),
+    descripcion VARCHAR(200),
+    estado VARCHAR(20),
+    id_paciente INT,
+
+    CONSTRAINT PK_Tratamientos PRIMARY KEY(id_tratamiento),
+
+    CONSTRAINT FK_Tratamientos_Pacientes
+        FOREIGN KEY(id_paciente)
+        REFERENCES Pacientes(id_paciente)
+);
