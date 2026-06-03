@@ -99,6 +99,20 @@ CREATE TABLE Tratamientos(
         REFERENCES Pacientes(id_paciente)
 );
 
+-- Tabla Medicamentos
+CREATE TABLE Medicamentos(
+    id_medicamento INT IDENTITY(1,1),
+    nombre VARCHAR(100),
+    fecha_vencimiento DATE,
+    id_tratamiento INT,
+
+    CONSTRAINT PK_Medicamentos PRIMARY KEY(id_medicamento),
+
+    CONSTRAINT FK_Medicamentos_Tratamientos
+        FOREIGN KEY(id_tratamiento)
+        REFERENCES Tratamientos(id_tratamiento)
+);
+
 --Tabla de habitaciones
 CREATE TABLE Habitaciones(
 	id_habitacion INT IDENTITY(1,1),
@@ -107,11 +121,12 @@ CREATE TABLE Habitaciones(
     id_paciente INT,
 
     CONSTRAINT PK_Habitaciones PRIMARY KEY(id_habitacion),
-	CONSTRAINT CHK_Habitaciones_numero_habitacion CHECK(numero_habitacion LIKE('[A-Z][0-9][0-9][0-9]'),
-	CONSTRAINT CHK_Habitaciones_tipo_habitacion CHECK(tipo_habitacion IN('General', 'Privada', 'UCI', 'Emergencia', 'Maternidad'),
+	CONSTRAINT CHK_Habitaciones_numero_habitacion CHECK(numero_habitacion LIKE('[A-Z][0-9][0-9][0-9]')),
+	CONSTRAINT CHK_Habitaciones_tipo_habitacion CHECK(tipo_habitacion IN('General', 'Privada', 'UCI', 'Emergencia', 'Maternidad')),
 
     CONSTRAINT FK_Habitaciones_Pacientes
         FOREIGN KEY(id_paciente)
         REFERENCES Pacientes(id_paciente)
 );
 GO
+
