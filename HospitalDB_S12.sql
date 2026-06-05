@@ -174,18 +174,10 @@ GO
 
 
 /****MÓDULO IV: DROP****/
+
 -- Tabla temporal
 CREATE TABLE Temporal(id INT);
 DROP TABLE Temporal;
-
--- Eliminar CHECK
-ALTER TABLE Pacientes DROP CONSTRAINT CHK_Pacientes_Edad;
-
--- Eliminar UNIQUE
-ALTER TABLE Pacientes DROP CONSTRAINT UQ_Pacientes_Correo;
-
--- Eliminar columna
-ALTER TABLE Pacientes DROP COLUMN genero;
 
 -- Tabla de pruebas
 CREATE TABLE Pruebas(id INT);
@@ -199,19 +191,29 @@ DROP TABLE Auditoria;
 CREATE TABLE Logs(id INT);
 DROP TABLE Logs;
 
--- Eliminar FK
-ALTER TABLE Habitaciones DROP CONSTRAINT FK_Habitaciones_Pacientes;
-
 -- Tabla MedicamentosPrueba
 CREATE TABLE MedicamentosPrueba(id INT);
 DROP TABLE MedicamentosPrueba;
 
--- Base de datos prueba
-CREATE DATABASE HospitalDB;
+-- Base de datos de prueba
+USE MASTER;
 GO
 
-DROP DATABASE HospitalDB;
+IF DB_ID('HospitalDB_Prueba') IS NOT NULL
+BEGIN
+    DROP DATABASE HospitalDB_Prueba;
+END
 GO
+
+CREATE DATABASE HospitalDB_Prueba;
+GO
+
+DROP DATABASE HospitalDB_Prueba;
+GO
+
+USE HospitalDB;
+GO
+
 
 
 /****MÓDULO V: INSERT****/
@@ -309,10 +311,11 @@ UPDATE Pacientes SET tipo_sangre='O+' WHERE id_paciente=1;
 
 
 /****MÓDULO VII: DELETE****/
-DELETE FROM Citas WHERE id_cita=15;
+DELETE FROM Citas WHERE id_cita=20;
 DELETE FROM Medicamentos WHERE id_medicamento=20;
-DELETE FROM Habitaciones WHERE id_habitacion=10;
-DELETE FROM Tratamientos WHERE id_tratamiento=10;
+DELETE FROM Habitaciones WHERE id_habitacion=20;
+DELETE FROM Tratamientos WHERE id_tratamiento=20;
+DELETE FROM Pacientes WHERE id_paciente=20;
 DELETE FROM Citas WHERE estado='Cancelada';
 DELETE FROM Habitaciones WHERE id_paciente IS NULL;
 DELETE FROM Medicamentos WHERE fecha_vencimiento < GETDATE();
