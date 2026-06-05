@@ -286,3 +286,25 @@ VALUES
 ('Medicamento13','2028-01-01',3),('Medicamento14','2028-02-01',4),('Medicamento15','2028-03-01',5),
 ('Medicamento16','2028-04-01',6),('Medicamento17','2028-05-01',7),('Medicamento18','2028-06-01',8),
 ('Medicamento19','2028-07-01',9),('Medicamento20','2028-08-01',10);
+
+
+
+/****MÓDULO VI: UPDATE****/
+UPDATE Pacientes SET telefono='88888888' WHERE id_paciente=1;
+UPDATE Pacientes SET direccion='Managua' WHERE id_paciente=1;
+UPDATE Medicos SET salario=2500 WHERE id_medico=1;
+UPDATE Medicos SET turno='Nocturno' WHERE id_medico=1;
+UPDATE Citas SET estado='Completada' WHERE id_cita=1;
+UPDATE Citas SET costo_consulta=50 WHERE id_cita=1;
+UPDATE Especialidades SET nombre='Cardiología General' WHERE id_especialidades=1;
+UPDATE Habitaciones SET disponibilidad=1 WHERE id_habitacion=1;
+UPDATE Tratamientos SET estado='Activo' WHERE id_tratamiento=1;
+UPDATE Medicamentos SET nombre='Paracetamol Forte' WHERE id_medicamento=1;
+UPDATE Pacientes SET correo='nuevo@gmail.com' WHERE id_paciente=1;
+UPDATE Medicos SET correo='nuevo_medico@hospital.com' WHERE id_medico=1;
+UPDATE Citas SET fecha_cita=DATEADD(DAY,10,GETDATE()) WHERE id_cita=1;
+UPDATE Medicos SET experiencia=10 WHERE id_medico=1;
+UPDATE Pacientes SET tipo_sangre='O+' WHERE id_paciente=1;
+
+
+
