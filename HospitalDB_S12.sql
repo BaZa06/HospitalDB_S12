@@ -318,3 +318,26 @@ DELETE FROM Habitaciones WHERE id_paciente IS NULL;
 DELETE FROM Medicamentos WHERE fecha_vencimiento < GETDATE();
 DELETE FROM Pacientes WHERE nombre LIKE '%Prueba%';
 
+
+/****MÓDULO VIII: SELECT****/
+SELECT * FROM Pacientes;
+SELECT * FROM Medicos;
+SELECT * FROM Especialidades;
+SELECT * FROM Citas;
+
+SELECT * FROM Pacientes ORDER BY apellido;
+SELECT * FROM Medicos ORDER BY salario DESC;
+
+SELECT * FROM Citas
+WHERE CAST(fecha_cita AS DATE)=CAST(GETDATE() AS DATE);
+
+SELECT * FROM Habitaciones
+WHERE disponibilidad=1;
+
+SELECT COUNT(*) AS TotalPacientes
+FROM Pacientes;
+
+SELECT m.nombre, COUNT(c.id_cita) AS TotalCitas
+FROM Medicos m
+LEFT JOIN Citas c ON m.id_medico=c.id_medico
+GROUP BY m.nombre;
