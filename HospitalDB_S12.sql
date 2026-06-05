@@ -115,7 +115,7 @@ CREATE TABLE Medicamentos(
         REFERENCES Tratamientos(id_tratamiento)
 );
 
---Tabla de habitaciones
+--Tabla de Habitaciones
 CREATE TABLE Habitaciones(
 	id_habitacion INT IDENTITY(1,1),
 	numero_habitacion VARCHAR(10) NOT NULL,
@@ -260,5 +260,29 @@ VALUES
 (DATEADD(DAY,4,GETDATE()),9,9),(DATEADD(DAY,5,GETDATE()),10,10),
 (GETDATE(),11,1),(GETDATE(),12,2),(GETDATE(),13,3),(GETDATE(),14,4),(GETDATE(),15,5);
 
+--Habitaciones
+INSERT INTO Habitaciones(numero_habitacion,tipo_habitacion,disponibilidad,id_paciente)
+VALUES
+('A101','General',0,1),('A102','General',0,2),('A103','Privada',0,3),
+('A104','Privada',1,NULL),('B105','UCI',1,NULL),('B106','Emergencia',1,NULL),
+('B107','General',0,4),('C108','Maternidad',1,NULL),('C109','General',0,5),
+('C110','Privada',1,NULL);
 
+--Tratamientos
+INSERT INTO Tratamientos(descripcion,estado,id_paciente)
+VALUES
+('Tratamiento 1','Activo',1),('Tratamiento 2','Activo',2),('Tratamiento 3','Activo',3),
+('Tratamiento 4','Activo',4),('Tratamiento 5','Activo',5),('Tratamiento 6','Finalizado',6),
+('Tratamiento 7','Finalizado',7),('Tratamiento 8','Finalizado',8),
+('Tratamiento 9','Finalizado',9),('Tratamiento 10','Finalizado',10);
 
+--Medicamentos
+INSERT INTO Medicamentos(nombre,fecha_vencimiento,id_tratamiento)
+VALUES
+('Paracetamol','2027-01-01',1),('Ibuprofeno','2027-02-01',2),('Amoxicilina','2027-03-01',3),
+('Aspirina','2027-04-01',4),('Omeprazol','2027-05-01',5),('Medicamento6','2027-06-01',6),
+('Medicamento7','2027-07-01',7),('Medicamento8','2027-08-01',8),('Medicamento9','2027-09-01',9),
+('Medicamento10','2027-10-01',10),('Medicamento11','2027-11-01',1),('Medicamento12','2027-12-01',2),
+('Medicamento13','2028-01-01',3),('Medicamento14','2028-02-01',4),('Medicamento15','2028-03-01',5),
+('Medicamento16','2028-04-01',6),('Medicamento17','2028-05-01',7),('Medicamento18','2028-06-01',8),
+('Medicamento19','2028-07-01',9),('Medicamento20','2028-08-01',10);
