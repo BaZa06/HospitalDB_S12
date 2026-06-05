@@ -308,3 +308,13 @@ UPDATE Pacientes SET tipo_sangre='O+' WHERE id_paciente=1;
 
 
 
+/****MÓDULO VII: DELETE****/
+DELETE FROM Citas WHERE id_cita=15;
+DELETE FROM Medicamentos WHERE id_medicamento=20;
+DELETE FROM Habitaciones WHERE id_habitacion=10;
+DELETE FROM Tratamientos WHERE id_tratamiento=10;
+DELETE FROM Citas WHERE estado='Cancelada';
+DELETE FROM Habitaciones WHERE id_paciente IS NULL;
+DELETE FROM Medicamentos WHERE fecha_vencimiento < GETDATE();
+DELETE FROM Pacientes WHERE nombre LIKE '%Prueba%';
+
